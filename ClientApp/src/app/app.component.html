@@ -1,0 +1,60 @@
+<!-- <div>
+<button (click)="incrementClicked()">Click me</button>
+<br/>
+<input [value] = "clicked">
+</div>
+
+The button was clicked {{clicked}} times.
+
+<div *ngIf="willShowBlock">
+    this is the conditional block
+</div>
+
+<div class="block-of-color" (contextmenu)="toggleContextMenu(true, $event)">
+
+</div>
+
+<div class="context-menu" *ngIf="contextMenuInfo.willContextMenuShow"
+    [style.left.px]="contextMenuInfo.clientX"
+    [style.top.px]="contextMenuInfo.clientY"
+    (click) = "contextClick()">
+    
+    This is the context menu
+</div> -->
+
+<!-- <button (click)="setShowUser(!willShowUser)">Toggle show users</button>
+
+<br/> -->
+
+<!-- <input [(ngModel)] = "textColorForChange" type="color"><button (click)="triggerColorChange()"> Change color</button> -->
+<!-- 
+<div class="spaced" *ngIf="willShowUser">
+    <app-users></app-users>
+</div> -->
+
+<div class="spaced">
+    
+
+        @if (authService.isAuthenticated) {
+    
+            <div class="space-bottom">
+                <button (click)="authService.logout()">
+                     Log Out
+                </button>
+                <button class = "space-left" (click)="goToMyProfile()">
+                    Go to your profile
+                </button>
+                <button class = "space-left" (click) ="goToPosts()">
+                    Posts
+                </button>
+                <button class = "space-left" (click) ="goToUser()">
+                    Users
+                </button>
+                
+            </div>
+        }
+    
+
+    <router-outlet></router-outlet>
+</div>
+

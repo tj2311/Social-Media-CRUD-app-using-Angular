@@ -1,0 +1,30 @@
+<form class="user-single-grid user-page-border">
+        <div class="grid50">
+    
+            Fullname:
+            <input name = "fullName"[(ngModel)] = "registration.fullName"/>
+            Username:
+            <input  name = "username" [(ngModel)] = "registration.username"/>
+            password:
+            <input  type = "password" name = "password" [(ngModel)] = "registration.password"/>
+            password Confirm:
+            <input type = "password" name = "passwordConfirm" [(ngModel)] = "registration.passwordConfirm"/>
+            city:
+            <input  name = "city" [(ngModel)] = "registration.city"/>
+            favoriteAnimal:
+            <input  name = "favoriteAnimal"[(ngModel)] = "registration.favoriteAnimal"/>
+            favoriteColour:
+            <input  name = "favoriteColor"[(ngModel)] = "registration.favoriteColor"/>
+            gender:
+            <input  name = "gender" [(ngModel)] = "registration.gender"/>
+            
+
+            
+        </div>
+        
+        
+        <button (click)="submitRegistration()">
+            Register
+        </button>
+    
+    </form>

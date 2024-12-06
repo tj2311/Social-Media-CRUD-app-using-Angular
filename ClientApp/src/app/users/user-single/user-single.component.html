@@ -1,0 +1,145 @@
+<div class="space space-bottom">
+
+    @if (isSingleUser) {
+        <button (click)="goToUserList()">
+            Go back to list
+        </button>
+    }
+</div>
+
+<!-- @if (!toBeEdited && !addMode && !displayUser) {
+    <div class="user-page-border"
+        [ngStyle]="textColor"> 
+    
+        No user found!
+    
+    </div>
+} -->
+
+
+  
+@if (!toBeEdited && !addMode && displayUser) {
+
+    <div (click) = "isSingleUser ? null : goToSingleUser(userForDisplay.userId)" class="user-page-border"
+          [ngStyle]="textColor">
+  
+          <div class = "grid50">
+              <div class="field-space">
+                  <label class="bold-text">
+                      Fullname: 
+                  </label>
+                  <div>
+                      {{userForDisplay.fullName}}
+                  </div>
+              </div>
+              <div class = "field-space">
+                  <label class="bold-text">
+                      Username:
+                  </label>
+                  <div>
+                      {{userForDisplay.username}}
+                  </div>
+              </div>
+          </div>
+  
+          @if (isSingleUser) {
+            
+              <div class="grid50" >
+                  <div class = "field-space">
+                      <label class="bold-text">
+                          City: 
+                      </label>
+                      <div>
+                          {{userForDisplay.city}}
+                      </div>
+                  </div>
+                  <div class = "field-space">
+                      <label class="bold-text">
+                          Favourite Animal: 
+                      </label>
+                      <div>
+                          {{userForDisplay.favoriteAnimal}}
+                      </div>
+                  </div>
+                  <div class = "field-space">
+                      <label class="bold-text">
+                          Favourite Color: 
+                      </label>
+                      <div>
+                          {{userForDisplay.favoriteColor}}
+                      </div>
+                      
+                      
+                  </div>
+                  <div class = "field-space">
+                      <label class="bold-text">
+                          gender: 
+                      </label>
+                      <div>
+                          {{userForDisplay.gender}}
+                      </div>
+                  </div>
+          
+                  @if(userForDisplay.userId === this.authService.userId){
+
+                      <button (click) = "userService.removeUser(userService.userList[userIndex].userId)">
+                          Delete this user
+                      </button>
+             
+                      <button (click) = "toggleEdit(true,userForDisplay)">
+                              Edit this user
+                      </button>
+                  }
+              </div>
+          }
+  
+          
+      </div>
+} @else if (toBeEdited || addMode) {
+
+    <form class="user-single-grid user-page-border" 
+        [ngClass]="textColor">
+        <div>
+    
+            Fullname:
+            <input name = "fullName"[(ngModel)] = "newUser.fullName"/>
+            Username:
+            <input  name = "username" [(ngModel)] = "newUser.username"/>
+            city:
+            <input  name = "city" [(ngModel)] = "newUser.city"/>
+            favoriteAnimal:
+            <input  name = "favoriteAnimal"[(ngModel)] = "newUser.favoriteAnimal"/>
+            favoriteColour:
+            <input  name = "favoriteColor"[(ngModel)] = "newUser.favoriteColor"/>
+            gender:
+            <input  name = "gender" [(ngModel)] = "newUser.gender"/>
+            
+        </div>
+        
+        
+        <button (click)="submitEdit()">
+            Save
+        </button>
+        <button (click)= "toggleEdit(false,this.userService.emptyUser)">
+            Cancel
+        </button>
+    
+    </form>
+}@else {
+    <div class="user-page-border"
+        [ngStyle]="textColor"> 
+        <h4>
+            No user found!
+        </h4>
+    
+    </div>
+}
+
+@if (isSingleUser) {
+    <h3>Posts:
+        
+    </h3>
+    <app-posts
+     [userId] = "userId"><!-- this passes the userId from the userSingle component to the posts component -->      
+    </app-posts>
+}

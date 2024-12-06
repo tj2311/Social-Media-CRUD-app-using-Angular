@@ -1,0 +1,19 @@
+
+
+<button (click)="addNewPost()">
+    Add new post
+</button>
+
+@if (addMode) {
+    <app-post-single [addMode] = "true"></app-post-single>
+}
+
+@if(postService.postList.length > 0){
+    @for (post of postService.postList; track $index) {
+        <app-post-single [post]="post"></app-post-single>
+    }
+} @else {
+    <div>
+        There are no posts for this user
+    </div>
+}

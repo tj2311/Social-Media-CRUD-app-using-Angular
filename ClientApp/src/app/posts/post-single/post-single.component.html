@@ -1,0 +1,68 @@
+<div class="user-page-border">
+    @if(!addMode){
+
+        <div class = "grid50">
+            <div class="field-space">
+                <label class="bold-text">
+                    Username: 
+                </label>
+                <div>
+                    {{this.userService.userMapping[post.userId]}}
+                </div>
+            </div>
+            <div class="grid50">
+                <div class = "field-space">
+                    <label class="bold-text">
+                        Post Date:
+                    </label>
+                    <div>
+                        {{setDateForDisplay(post.postDate)}}
+                    </div>
+                </div>
+                <div class="field-space">
+  
+                    @if(post.postDate !== post.updateDate){
+                      <label class="bold-text">
+                          Update Date:
+                      </label>
+                      <div>
+                          {{setDateForDisplay(post.updateDate)}}
+                      </div>
+                    }
+                </div>
+            </div>
+          </div>
+    }
+
+    <div class="field-space">
+        @if(!editMode && !addMode){
+            <div>
+                    {{post.postContent}}
+                </div>
+            
+        } @else {
+            <form (onSubmit) = saveEdit()>
+                <textarea name = "postContent" [(ngModel)] = "postForEdit.postContent" class="text-area-default">
+                </textarea>
+            </form>
+        }
+    </div>
+        @if(post.userId === this.authService.userId && !editMode && !addMode){
+
+            <button (click) = "this.postService.removePost(post.postId)">
+                Delete this post
+            </button>
+    
+            <button (click) = "toggleEdit(true,post)">
+                    Edit this post
+            </button>
+        } @else if (editMode || addMode) {
+            <button (click) = "toggleEdit(false)">
+                Cancel
+            </button>
+    
+            <button (click) = "saveEdit()">
+                Save
+            </button>
+        }
+  </div>

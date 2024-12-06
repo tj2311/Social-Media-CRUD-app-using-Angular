@@ -1,0 +1,30 @@
+
+
+<div class="page-width">
+
+    <div class="field-space">
+
+        <button (click)="addNewUser()">
+            Add new User
+        </button>
+    </div>
+    <div class = "field-space">
+        <input [(ngModel)] = "userSearch">
+        <button (click)="getUsers()">
+            Search User
+        </button>
+    </div>
+
+    @if (addingNewUser) {
+        <app-user-single [addMode]="true"></app-user-single>
+    }
+    @for (name of userService.userList; track $index) {
+        <app-user-single [userIndex]="$index" ></app-user-single>
+    } @empty { 
+        <div>
+            No Users Found!
+        </div>
+    }
+    <!-- @empty is when the for is looking at an empty list -->
+    
+</div>

@@ -1,0 +1,32 @@
+<form class="user-page-border auth-form-holder">
+    <div class="grid50">
+        <div>
+
+            <label class="bold-text">
+                Username:
+                <input  name = "username" [(ngModel)] = "login.username"/>
+            </label>
+        </div>
+        <div>
+
+            <label class="bold-text">
+                password:
+                <input  type = "password" name = "password" [(ngModel)] = "login.password"/>      
+            </label>
+        </div>
+
+    </div>
+    
+    <div>
+
+        <button (click)="submitLogin()">
+            Login
+        </button>
+    </div>
+
+</form>
+<br>
+
+<a href="" (click) = "goToRegistration($event)" >
+    Register New User
+</a>
